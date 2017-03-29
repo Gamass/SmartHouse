@@ -1,0 +1,29 @@
+﻿@using MVC.SmartHouse.Models
+@model MVC.SmartHouse.Models.Light
+@{
+    int i = Model.Id;
+    string pwrState = Model.PwrState == "выкл" ? "disabled=\"\"" : "";
+    string pwrModeUp = "", pwrModeDn = "";
+    var modes = Model.FirstLastModes();
+    if (pwrState == "")
+    {
+        pwrModeUp = Model.CurrentMode() == modes.last ? "disabled =\"\"" : pwrModeUp;
+        pwrModeDn = Model.CurrentMode() == modes.first ? "disabled =\"\"" : pwrModeDn;
+    }
+}
+<div id="div_@i" class="light">
+        Состояние:
+        <label id="lbl_pwr_@i">@Model.PwrState</label>
+        <br />
+        <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
+        <hr />
+        Уровень яркости:
+        <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
+        <br />
+        <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up яркость</button>
+        <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down яркость</button>
+        <hr />
+        <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
+        <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>
+        <br />
+</div>

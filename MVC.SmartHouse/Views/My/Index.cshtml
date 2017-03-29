@@ -1,0 +1,62 @@
+﻿@(Layout = null)
+@using MVC.SmartHouse.Models
+@model Device[]
+<!DOCTYPE html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/index")
+@Styles.Render("~/Content/Index.css")
+
+<html>
+<head>
+    <title>Smart House</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <button id="Add_" onclick="AddButtonPress()">Добавить</button>
+    <br />
+    <select id="DevSelect">
+        <option value="light">Лампа</option>
+        <option value="tv">Телевизор</option>
+        <option value="cond">Кондиционер</option>
+        <option value="ref">Холодильник</option>
+        <option value="micr">Микроволновка</option>
+    </select>
+    <div id="devices">
+        @if(Model?.Length > 0)
+        {
+            foreach(var device in Model)
+            {
+                var className = device.GetType().Name;
+                switch (className)
+                {
+                    case "Conditioner":
+                        Html.RenderPartial("PartCond", device);
+                        break;
+                    case "Light":
+                        Html.RenderPartial("PartLight", device);
+                        break;
+                    case "Microwave":
+                        Html.RenderPartial("PartMicrowave", device);
+                        break;
+                    case "Refrigerator":
+                        Html.RenderPartial("PartRef", device);
+                        break;
+                    case "TV":
+                        Html.RenderPartial("PartTV", device);
+                        break;
+                }
+            }
+        }
+    </div>
+    <a href="#x" class="overlay" id="overlay"></a>
+    <div class="popup" style="width:100%">
+        <strong>
+            <label id="overlay_lbl" />
+        </strong>
+        <a class="close" title="Закрыть" href="#close"></a>
+    </div>
+</body>
+</html>
+
+

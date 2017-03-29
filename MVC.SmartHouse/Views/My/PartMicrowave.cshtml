@@ -1,0 +1,48 @@
+﻿@using MVC.SmartHouse.Models
+@model Microwave
+@{
+    int i = Model.Id;
+    string pwrState = Model.PwrState == "выкл" ? "disabled=\"\"" : "";
+    string pwrModeUp = "", pwrModeDn = "", showRest = "";
+    var modes = Model.FirstLastModes();
+    if (pwrState == "")
+    {
+        pwrModeUp = Model.CurrentMode() == modes.first ? "disabled =\"\"" : pwrModeUp;
+        pwrModeDn = Model.CurrentMode() == modes.last ? "disabled =\"\"" : pwrModeDn;
+        showRest = Model.time == Model.restTime ? "hidden" : showRest;
+    }
+}
+<div id="div_@i" class="micr">
+    Состояние:
+    <label id="lbl_pwr_@i">@Model.PwrState</label>
+    <br />
+    <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
+    <hr />
+    Режим потребления энергии
+    <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
+    <br />
+    <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up режим</button>
+    <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down режим</button>
+    <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>
+    <hr />
+    Таймер установлен на:
+    <br />
+    <label id="lbl_time_@i" onclick="List.Get(@i).Edit()">@Model.time</label>
+    <input id="micr_inpt_@i" class="tdinpt1" type="number" max="120" min="1" style="width: 38px" hidden
+           onblur="List.Get(@i).Onblur()"/> Секунд
+    <button id="micr_edit_@i" class="tdbtn" onclick="List.Get(@i).Edit()" @pwrState>Изменить</button>
+    <button id="micr_suc_@i" class="tdbtn" onclick="List.Get(@i).Success()" hidden>Готово</button>
+    <button id="micr_canc_@i" class="tdbtn" onclick="List.Get(@i).Cancel()" hidden>Отмена</button>
+    <label id="micr_showrest_@i" @showRest>
+        <br />
+        Оставшееся время: <label id="micr_resttime_@i">
+            @Model.restTime
+        </label> Секунд
+    </label>
+    <br />
+    <button id="micr_start_@i" class="tdbtn" onclick="List.Get(@i).Start()" @pwrState>Старт</button>
+    <button id="micr_stop_@i" onclick="List.Get(@i).Stop()" @pwrState>Стоп</button>
+    <button id="micr_reset_@i" onclick="List.Get(@i).Reset()" hidden>Сброс</button>
+    <hr />
+    <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
+</div>

@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MVC.SmartHouse.Models.Conditioner">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACABAAAAAAAAIAQAAAABAAQBAgAEAAE=</HashCode>
+      <FileName>Models\DeviceClasses\Conditioner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Device">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAgAAAAAAAQAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DeviceClasses\Device.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Devices">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAACAAAAABAAAAAAAAACAAAAAABAAA=</HashCode>
+      <FileName>Models\DeviceClasses\Devices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Light">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAIAAAAAABAAAAAgAAAAE=</HashCode>
+      <FileName>Models\DeviceClasses\Light.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Microwave">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAACAAAAAAAAAAIAAAAAABIAAAAgIEAAE=</HashCode>
+      <FileName>Models\DeviceClasses\Microwave.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Refrigerator">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAICBCABAAAAAAAAIAQAAAABAAUBAgAEAAk=</HashCode>
+      <FileName>Models\DeviceClasses\Refrigerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.TV">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAggAAAIICAAAAAMAAAAIAAAAAABAQIAAgACAAk=</HashCode>
+      <FileName>Models\DeviceClasses\TV.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Channel100" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAIAAAAAAEAAAAAAAAAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>Models\InterfaceClases\Channel100.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Modeslvl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAAAAAIAAAAAAAAAAAAgAAAAE=</HashCode>
+      <FileName>Models\InterfaceClases\Modeslvl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.RefrigeratorSpace" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAgAAAIABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAg=</HashCode>
+      <FileName>Models\InterfaceClases\RefrigeratorSpace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.RefTemp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAQAAAAAAAQBAAAAAAA=</HashCode>
+      <FileName>Models\InterfaceClases\RefTemp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Termostat" Collapsed="true">
+    <Position X="17.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAhEAAAAAAAIAQAAAAAAAQBAgAAAAE=</HashCode>
+      <FileName>Models\InterfaceClases\Termostat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.TimerMicrowave" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACACAgAAAgAAAAAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Models\InterfaceClases\TimerMicrowave.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.Volume100" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAACCAAA=</HashCode>
+      <FileName>Models\InterfaceClases\Volume100.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.InterfaceClases.BinFile&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAABAAAAAAAAAAgAAAAAAAAAAAAAAkAAAA=</HashCode>
+      <FileName>Models\InterfaceClases\BinFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MVC.SmartHouse.Models.InterfaceClases.OptionFile&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAkAAAA=</HashCode>
+      <FileName>Models\InterfaceClases\OptionFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="MVC.SmartHouse.Models.ICapacitySpace" Collapsed="true">
+    <Position X="12" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAIABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAg=</HashCode>
+      <FileName>Models\Interfaces\ICapacitySpace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.IChannel" Collapsed="true">
+    <Position X="13.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAIAAAAAAEAAAAAAAAAAAAAQAAAAAAAAg=</HashCode>
+      <FileName>Models\Interfaces\IChannel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.IFile&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Interfaces\IFile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.IModes" Collapsed="true">
+    <Position X="17.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAAAAE=</HashCode>
+      <FileName>Models\Interfaces\IModes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.ITemperature" Collapsed="true">
+    <Position X="12" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAQAAAAAAAQBAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\ITemperature.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.ITimer" Collapsed="true">
+    <Position X="13.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Models\Interfaces\ITimer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MVC.SmartHouse.Models.IVolume" Collapsed="true">
+    <Position X="15.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAIAAAAAAAIAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Models\Interfaces\IVolume.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MVC.SmartHouse.Models._4lvlBright" Collapsed="true">
+    <Position X="15.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Interfaces\IModes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MVC.SmartHouse.Models._3lvlTermo" Collapsed="true">
+    <Position X="13.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAABAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IModes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MVC.SmartHouse.Models._3lvlRef" Collapsed="true">
+    <Position X="12" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\IModes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MVC.SmartHouse.Models._4lvlMic" Collapsed="true">
+    <Position X="17.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAgAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Interfaces\IModes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

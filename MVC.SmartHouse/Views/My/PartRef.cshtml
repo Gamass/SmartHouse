@@ -1,0 +1,77 @@
+﻿@using MVC.SmartHouse.Models
+@model Refrigerator
+@{
+    int i = Model.Id;
+    string pwrState = Model.PwrState == "выкл" ? "disabled=\"\"" : "";
+    string pwrModeUp = "", pwrModeDn = "", tmpModeUp = "", tmpModeDn = "";
+    var modes = Model.FirstLastModes();
+    if (pwrState == "")
+    {
+        pwrModeUp = Model.CurrentMode() == modes.first ? "disabled =\"\"" : pwrModeUp;
+        pwrModeDn = Model.CurrentMode() == modes.last ? "disabled =\"\"" : pwrModeDn;
+        tmpModeUp = Model.AllTemps[1] == Model.temperature ? "disabled =\"\"" : tmpModeUp;
+        tmpModeDn = Model.AllTemps[0] == Model.temperature ? "disabled =\"\"" : tmpModeDn;
+    }
+}
+<div id="div_@i" class="ref">
+    Состояние:
+    <label id="lbl_pwr_@i">@Model.PwrState</label>
+    <br />
+    <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
+    <hr />
+    Режим потребления энергии
+    <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
+    <br />
+    <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up режим</button>
+    <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down режим</button>
+    <hr />
+    <label id="lbl_tmp_@i">@Model.temperature</label>°С
+    <br />
+    <button id="tmp_up_@i" onclick="List.Get(@i).SwitchTemp(1)" @pwrState @tmpModeUp>Up температуру</button>
+    <button id="tmp_dn_@i" onclick="List.Get(@i).SwitchTemp(0)" @pwrState @tmpModeDn>Down температуру</button>
+    <br />
+    <button id="tmp_max_@i" onclick="List.Get(@i).MaxMinTemp(1)" @pwrState @tmpModeUp>Мах температуру</button>
+    <button id="tmp_min_@i" onclick="List.Get(@i).MaxMinTemp(0)" @pwrState @tmpModeDn>Мин температура</button>
+    <hr />
+    Свободно:   
+    <strong><label id="lbl_fspace_@(i)" style="margin-left: 20px">@Model.FreeSpace()</label></strong>
+        <br />
+        @{
+            var Elements = Model.SpaceElements;
+            if (Elements.Count > 0)
+            {
+                <table id="tbl_@i">
+                    <tr>
+                        <td>Продукт</td>
+                        <td>Объём</td>
+                        <td><button id="td_add_@i" onclick="List.Get(@i).Add()" @pwrState>Добавить</button></td>
+                    </tr>
+                    @for (var j = 0; j < Elements.Count; j++)
+                    {
+                        <tr id="tr_@(j)_@i" class="tabl">
+                            <td id="td_frst_@(j)_@i" class="tabl">
+                                <label id="td_lbl0_@(j)_@i" class="tdLbl0">@Elements[j].Name</label>
+                                <input id="td_inpt0_@(j)_@i" class="tdinpt0" type="text" size="10" hidden
+                                       onblur="List.Get(@i).CheckTd0(@j)" />
+                            </td>
+                            <td id="td_sec_@(j)_@i" class="tabl" onclick="List.Get(@i).ClickTd1(@j)">
+                                <label id="td_lbl1_@(j)_@i" class="tdLbl1">@Elements[j].Value</label>
+                                <input id="td_inpt1_@(j)_@i" class="tdinpt1" type="number" max="99" min="0" style="width: 38px" hidden
+                                       onblur="List.Get(@i).CheckTd1(@j)" onfocus="List.Get(@i).PressTd1(@j)" />
+                            </td>
+                            <td id="td_thrd_@(j)_@i">
+                                <button id="td_suc_@(j)_@i" class="tdbtn" hidden onclick="List.Get(@i).Success(@j)">Готово</button>
+                                <button id="td_edit_@(j)_@i" class="tdbtn" onclick="List.Get(@i).Edit(@j)" @pwrState>Изменить</button>
+                                <button id="td_del_@(j)_@i" class="tdbtn" onclick="List.Get(@i).Delete(@j)" @pwrState>Удалить</button>
+                                <button id="td_canc_@(j)_@i" class="tdbtn" onclick="List.Get(@i).Cancel(@j)" hidden>Отмена</button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        }
+        <hr />
+        <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
+        <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>
+        <label id="lbl_temps_@i" hidden>@(string.Join(" ", Model.AllTemps))</label>
+</div>
