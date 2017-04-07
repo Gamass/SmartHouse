@@ -13,6 +13,10 @@
     }
 }
 <div id="div_@i" class="cond">
+    <strong style="color:cornflowerblue">
+        Кондиционер
+    </strong>
+    <hr />
     Состояние:
     <label id="lbl_pwr_@i">@Model.PwrState</label>
     <br />
@@ -24,6 +28,7 @@
     <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up режим</button>
     <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down режим</button>
     <hr />
+    Температура: 
     <label id="lbl_tmp_@i">@Model.temperature</label>°С
     <br />
     <button id="tmp_up_@i" onclick="List.Get(@i).SwitchTemp(1)" @pwrState @tmpModeUp>Up температуру</button>

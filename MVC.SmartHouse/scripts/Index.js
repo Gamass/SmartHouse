@@ -812,7 +812,7 @@ var RefSpaceSimple = (function () {
     RefSpaceSimple.prototype.CheckTr = function (num) {
         var idTr = "#tr_" + num + "_" + this.num;
         var tmp = this;
-        $(document).on("click", function (e) {
+        var check = $(document).on("click", function (e) {
             var elem = $(e.target);
             var outOfArea = elem.closest(idTr).length == 0;
             var valId = elem.attr("id");
@@ -820,7 +820,8 @@ var RefSpaceSimple = (function () {
             if (outOfArea || checklbl0) {
                 tmp.OnblurTr(num);
             }
-            $(document).off('click');
+            //$(document).off('click');
+            check = null;
         });
     };
     return RefSpaceSimple;
@@ -946,22 +947,25 @@ var TimerMicr = (function () {
         var checkSuc = this.btnSuccess.attr("id");
         var checkEdit = this.btnEdit.attr("id");
         var checkInput = this.input.attr("id");
-        $(document).on("click", function (e) {
+        var check = $(document).on("click", function (e) {
             var elem = $(e.target);
             var valId = elem.attr("id");
             if (valId != undefined) {
-                var check = valId == checkEdit || valId == checkInput ? false : true;
+                var check_1 = valId == checkEdit || valId == checkInput ? false : true;
                 if (valId == checkSuc) {
-                    $(document).off('click');
+                    //$(document).off('click');
+                    check_1 = null;
                 }
-                else if (check) {
+                else if (check_1) {
                     tmp.Cancel();
-                    $(document).off('click');
+                    //$(document).off('click');
+                    check_1 = null;
                 }
             }
             else
                 tmp.Cancel();
-            $(document).off('click');
+            //$(document).off('click');
+            check = null;
         });
     };
     TimerMicr.prototype.EnableTimer = function (visible) {

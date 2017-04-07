@@ -15,6 +15,10 @@
     }
 }
 <div id="div_@i" class="tv">
+    <strong style="color:forestgreen">
+        Телевизор
+    </strong>
+    <hr />
     Состояние:
     <label id="lbl_pwr_@i">@Model.PwrState</label>
     <br />
@@ -29,9 +33,9 @@
     Канал:
     <label id="lbl_chn_@i">@Model.channel</label>
     <br />
-    <button id="chn_up_@i" onclick="List.Get(@i).SwitchChn(1)" @pwrState @chnUp>След. канал</button>
-    <button id="chn_dn_@i" onclick="List.Get(@i).SwitchChn(0)" @pwrState @chnDn>Пред. канал</button>
-    <button id="chn_bck_@i" onclick="List.Get(@i).BackChn()" @pwrState>Вернуть канал</button>
+    <button id="chn_up_@i" onclick="List.Get(@i).SwitchChn(1)" @pwrState @chnUp>След.</button>
+    <button id="chn_dn_@i" onclick="List.Get(@i).SwitchChn(0)" @pwrState @chnDn>Пред.</button>
+    <button id="chn_bck_@i" onclick="List.Get(@i).BackChn()" @pwrState>Вернуть</button>
     <br />
     <input type="text" max="99" min="0" value="@Model.channel" id="input_chn_@i" style="width: 16px"
             onkeypress="return List.Get(@i).IsNumber(event, value)" oncontextmenu="return false" onfocus="List.Get(@i).ClearInput()" 
@@ -43,6 +47,7 @@
     <br />
     <button id="vol_up_@i" onclick="List.Get(@i).SwitchVol(1)" @pwrState @volUp>Увеличить</button>
     <button id="vol_dn_@i" onclick="List.Get(@i).SwitchVol(0)" @pwrState @volDn>Уменьшить</button>
+    <br />
     <button id="vol_mute_@i" onclick="List.Get(@i).Mute()" @pwrState>Приглушить</button>
     <hr />
     <button id="del_@i" onclick="List.Del(@i)">Удалить</button>

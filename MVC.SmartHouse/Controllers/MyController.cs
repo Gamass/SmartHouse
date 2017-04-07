@@ -183,7 +183,10 @@ namespace MVC.SmartHouse.Controllers
                         db.Devices.DeviceFullSave(device);
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                result = "Error";
+            }
             return result;
         }
     }

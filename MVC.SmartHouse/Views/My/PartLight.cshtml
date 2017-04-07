@@ -12,18 +12,22 @@
     }
 }
 <div id="div_@i" class="light">
-        Состояние:
-        <label id="lbl_pwr_@i">@Model.PwrState</label>
-        <br />
-        <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
-        <hr />
-        Уровень яркости:
-        <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
-        <br />
-        <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up яркость</button>
-        <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down яркость</button>
-        <hr />
-        <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
-        <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>
-        <br />
+    <strong style="color:yellow">
+        Лампа
+    </strong>
+    <hr />
+    Состояние:
+    <label id="lbl_pwr_@i">@Model.PwrState</label>
+    <br />
+    <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
+    <hr />
+    Уровень яркости:
+    <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
+    <br />
+    <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up яркость</button>
+    <button id="pmode_dn_@i" onclick="List.Get(@i).SwitchMode(0)" @pwrState @pwrModeDn>Down яркость</button>
+    <hr />
+    <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
+    <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>
+    <br />
 </div>

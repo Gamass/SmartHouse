@@ -22,7 +22,7 @@
         <option value="ref">Холодильник</option>
         <option value="micr">Микроволновка</option>
     </select>
-    <div id="devices">
+    <section id="devices">
         @if(Model?.Length > 0)
         {
             foreach(var device in Model)
@@ -48,7 +48,7 @@
                 }
             }
         }
-    </div>
+    </section>
     <a href="#x" class="overlay" id="overlay"></a>
     <div class="popup" style="width:100%">
         <strong>

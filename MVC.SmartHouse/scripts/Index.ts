@@ -322,6 +322,7 @@ class TvChannel implements IChannel {
     }
 }
 
+
 interface IVolume {
     SwitchVol(Switch: boolean): void;
     Mute(): void;
@@ -398,6 +399,7 @@ class SimpleVolume implements IVolume {
         });
     }
 }
+
 
 interface ITemperature {
     TModeValue: number;
@@ -924,16 +926,18 @@ class RefSpaceSimple implements IRefField {
     public CheckTr(num: number) {
         let idTr: string = "#tr_" + num + "_" + this.num;
         let tmp: IRefField = this;
-        $(document).on("click", function (e) {
-            let elem: JQuery = $(e.target);
-            let outOfArea: boolean = elem.closest(idTr).length == 0;
-            let valId: string = elem.attr("id");
-            let checklbl0: boolean = valId == undefined ? false : valId.search("lbl0") >= 0;
-            if (outOfArea || checklbl0) {
-                tmp.OnblurTr(num);
-            }
-            $(document).off('click');
-        });
+        let check =
+            $(document).on("click", function (e) {
+                let elem: JQuery = $(e.target);
+                let outOfArea: boolean = elem.closest(idTr).length == 0;
+                let valId: string = elem.attr("id");
+                let checklbl0: boolean = valId == undefined ? false : valId.search("lbl0") >= 0;
+                if (outOfArea || checklbl0) {
+                    tmp.OnblurTr(num);
+                }
+                //$(document).off('click');
+                check = null;
+            });
     }
 }
 
@@ -1095,23 +1099,27 @@ class TimerMicr implements ITimer {
         let checkSuc: string = this.btnSuccess.attr("id");
         let checkEdit: string = this.btnEdit.attr("id");
         let checkInput: string = this.input.attr("id");
-        $(document).on("click", function (e) {
-            let elem: JQuery = $(e.target);
-            let valId: string = elem.attr("id");
-            if (valId != undefined) {
-                let check: boolean = valId == checkEdit || valId == checkInput ? false : true;
-                if (valId == checkSuc) {
-                    $(document).off('click');
+        let check =
+            $(document).on("click", function (e) {
+                let elem: JQuery = $(e.target);
+                let valId: string = elem.attr("id");
+                if (valId != undefined) {
+                    let check: boolean = valId == checkEdit || valId == checkInput ? false : true;
+                    if (valId == checkSuc) {
+                        //$(document).off('click');
+                        check = null;
+                    }
+                    else if (check) {
+                        tmp.Cancel();
+                        //$(document).off('click');
+                        check = null;
+                    }
                 }
-                else if (check) {
+                else
                     tmp.Cancel();
-                    $(document).off('click');
-                }
-            }
-            else
-                tmp.Cancel();
-                $(document).off('click');
-        });
+                //$(document).off('click');
+                check = null;
+            });
     }
 
     public EnableTimer(visible: boolean): void {
