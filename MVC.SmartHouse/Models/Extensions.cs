@@ -91,7 +91,7 @@ namespace MVC.SmartHouse.Models
             }
         }
 
-        //Метод расширения удаления из Devices включая все навигационные свойства
+        //Метод расширения для полного удаления из Devices включая все навигационные свойства
         public static void DeviceFullClear(this IQueryable<Device> query, Device dev)
         {
             using (DeviceContext db = new DeviceContext())
@@ -130,6 +130,7 @@ namespace MVC.SmartHouse.Models
             }
         }
 
+        //Метод расширения для полного сохранения в Devices включая все навигационные свойства
         public static void DeviceFullSave(this IQueryable<Device> query, Device dev)
         {
             using (DeviceContext db = new DeviceContext())

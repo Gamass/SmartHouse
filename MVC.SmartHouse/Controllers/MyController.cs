@@ -31,53 +31,47 @@ namespace MVC.SmartHouse.Controllers
         {
             var catchs = catchhall.Split('/');
             Device newDevice;
-            using (DeviceContext db = new DeviceContext())
+            if (!String.IsNullOrEmpty(catchs[0]))
             {
+                using (DeviceContext db = new DeviceContext())
+                {
+                    switch (catchs[0])
+                    {
+                        case "light":
+                            newDevice = new Light("Лампа", new Modeslvl(new string[] { "низкий", "средний", "высокий", "макс." }));
+                            db.Devices.Add(newDevice);
+                            db.SaveChanges();
+                            return PartialView("PartLight", newDevice);
+                        case "tv":
+                            newDevice = new TV("TV", new Modeslvl(new string[] { "низкий", "средний", "высокий", "макс." }), new Volume100(), new Channel100());
+                            db.Devices.Add(newDevice);
+                            db.SaveChanges();
+                            return PartialView("PartTV", newDevice);
+                        case "cond":
+                            newDevice = new Conditioner("Cond", new Termostat());
+                            db.Devices.Add(newDevice);
+                            db.SaveChanges();
+                            return PartialView("PartCond", newDevice);
+                        case "ref":
+                            newDevice = new Refrigerator("Ref", new Modeslvl(new string[] { "эконом.", "авто", "интенс." }), new RefTemp(), new RefrigeratorSpace(50));
+                            db.Devices.Add(newDevice);
+                            db.SaveChanges();
+                            return PartialView("PartRef", newDevice);
+                        case "ref_add":
+                            return PartialView("PartRefItem", new int[] { Convert.ToInt32(catchs[1]), Convert.ToInt32(catchs[2]) });
+                        case "micr":
+                            newDevice = new Microwave("Micr", new Modeslvl((new string[] { "разморозка", "низкий", "средний", "макс" })), new NetTimer());
+                            db.Devices.Add(newDevice);
+                            db.SaveChanges();
+                            return PartialView("PartMicrowave", newDevice);
+                        default:
+                            throw new Exception("Bad Request");
 
-                if (catchs[0] == "light")
-                {
-                    newDevice = new Light("Лампа", new Modeslvl(new string[] { "низкий", "средний", "высокий", "максимальный" }));
-                    db.Devices.Add(newDevice);
-                    db.SaveChanges();
-                    return PartialView("PartLight", newDevice);
-                }
-                else if (catchs[0] == "tv")
-                {
-                    newDevice = new TV("TV", new Modeslvl(new string[] { "низкий", "средний", "высокий", "максимальный" }), new Volume100(), new Channel100());
-                    db.Devices.Add(newDevice);
-                    db.SaveChanges();
-                    return PartialView("PartTV", newDevice);
-                }
-                else if (catchs[0] == "cond")
-                {
-                    newDevice = new Conditioner("Cond", new Termostat());
-                    db.Devices.Add(newDevice);
-                    db.SaveChanges();
-                    return PartialView("PartCond", newDevice);
-                }
-                else if (catchs[0] == "ref")
-                {
-                    newDevice = new Refrigerator("Ref", new Modeslvl(new string[] { "экономный", "авто", "интенсивный" }), new RefTemp(), new RefrigeratorSpace(50));
-                    db.Devices.Add(newDevice);
-                    db.SaveChanges();
-                    return PartialView("PartRef", newDevice);
-                }
-                else if (catchs[0] == "ref_add")
-                {
-                    return PartialView("PartRefItem", new int[] { Convert.ToInt32(catchs[1]), Convert.ToInt32(catchs[2]) });
-                }
-                else if (catchs[0] == "micr")
-                {
-                    newDevice = new Microwave("Micr", new Modeslvl((new string[] { "разморозка", "низкий", "средний", "макс" })), new NetTimer());
-                    db.Devices.Add(newDevice);
-                    db.SaveChanges();
-                    return PartialView("PartMicrowave", newDevice);
-                }
-                else
-                {
-                    throw new Exception("Bad Request");
+                    }
                 }
             }
+            else
+                throw new Exception("Bad Request");
         }
 
         public string DevAct(string catchhall)

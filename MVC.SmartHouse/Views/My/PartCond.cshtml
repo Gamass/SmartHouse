@@ -22,7 +22,7 @@
     <br />
     <button id="pwr_@i" onclick="List.Get(@i).SwitchPower()">Вкл/Выкл</button>
     <hr />
-    Режим потребления энергии
+    Электро-режим: 
     <label id="lbl_pmode_@i">@Model.CurrentMode()</label>
     <br />
     <button id="pmode_up_@i" onclick="List.Get(@i).SwitchMode(1)" @pwrState @pwrModeUp>Up режим</button>
@@ -31,11 +31,11 @@
     Температура: 
     <label id="lbl_tmp_@i">@Model.temperature</label>°С
     <br />
-    <button id="tmp_up_@i" onclick="List.Get(@i).SwitchTemp(1)" @pwrState @tmpModeUp>Up температуру</button>
-    <button id="tmp_dn_@i" onclick="List.Get(@i).SwitchTemp(0)" @pwrState @tmpModeDn>Down температуру</button>
+    <button id="tmp_up_@i" onclick="List.Get(@i).SwitchTemp(1)" @pwrState @tmpModeUp>Up °С</button>
+    <button id="tmp_dn_@i" onclick="List.Get(@i).SwitchTemp(0)" @pwrState @tmpModeDn>Down °С</button>
     <br />
-    <button id="tmp_max_@i" onclick="List.Get(@i).MaxMinTemp(1)" @pwrState @tmpModeUp>Мах температуру</button>
-    <button id="tmp_min_@i" onclick="List.Get(@i).MaxMinTemp(0)" @pwrState @tmpModeDn>Мин температура</button>
+    <button id="tmp_max_@i" onclick="List.Get(@i).MaxMinTemp(1)" @pwrState @tmpModeUp>Мах °С</button>
+    <button id="tmp_min_@i" onclick="List.Get(@i).MaxMinTemp(0)" @pwrState @tmpModeDn>Мин °С</button>
     <hr />
     <button id="del_@i" onclick="List.Del(@i)">Удалить</button>
     <label id="lbl_modes_@i" hidden>@(modes.first + " " + modes.last)</label>

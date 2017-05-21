@@ -2,6 +2,7 @@
 }
 
 .light {
+    width: 200px;
     border: 1px solid black;
     float: left;
     margin: 2px;
@@ -12,6 +13,7 @@
 }
 
 .micr {
+    width: 200px;
     border: 1px solid black;
     float: left;
     margin: 2px;
@@ -22,6 +24,7 @@
 }
 
 .tv {
+    width: 200px;
     border: 1px solid black;
     float: left;
     margin: 2px;
@@ -32,6 +35,7 @@
 }
 
 .cond {
+    width: 198px;
     border: 1px solid black;
     float: left;
     margin: 2px;
@@ -42,6 +46,7 @@
 }
 
 .ref {
+    width: 295px;
     border: 1px solid black;
     float: left;
     margin: 2px;
@@ -62,9 +67,8 @@ input.invalid {
   border-color: #ff33cc;
 }
 
-.tdLbl0 { 
-    display: block; 
-    width: 85px;
+.tdLbl0 {
+    width: 80px;
 }
 
 .tdLbl1 { 
@@ -77,11 +81,18 @@ input.invalid {
 }
 
 .tdinpt0{
-    width: 80px;
+    width: 75px;
 }
 
 .tdinpt1{
-    width: 38px;
+    width: 35px;
+}
+
+tbody {
+    height: 100px;
+    display: inline-block;
+    width: 294px;
+    overflow: auto;
 }
 
 .overlay {

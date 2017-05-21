@@ -95,13 +95,13 @@ var Dev = (function () {
         configurable: true
     });
     Dev.prototype.SwitchPower = function () {
-        var tmp = this;
+        var that = this;
         var link = "/My/DevAct/" + "Power" + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PowerState = data;
-                tmp.enableContent();
+                that.PowerState = data;
+                that.enableContent();
             }
         });
     };
@@ -150,14 +150,14 @@ var SimpleMode = (function () {
         }
     };
     SimpleMode.prototype.SwitchMode = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "pmode_up" : "pmode_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PmodeValue = data;
-                tmp.ChangePmode(false);
+                that.PmodeValue = data;
+                that.ChangePmode(false);
             }
         });
     };
@@ -224,7 +224,7 @@ var TvChannel = (function () {
     };
     TvChannel.prototype.SetChn = function (Switch) {
         this.chnWrite.prop("disabled", true);
-        var tmp = this;
+        var that = this;
         var link;
         if (Switch == 4)
             link = "/My/DevAct/chn_write/" + this.chnInput.val() + "/" + this.num;
@@ -235,8 +235,8 @@ var TvChannel = (function () {
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.ChnNumValue = parseInt(data);
-                tmp.LimitChn(parseInt(data));
+                that.ChnNumValue = parseInt(data);
+                that.LimitChn(parseInt(data));
             }
         });
     };
@@ -321,23 +321,23 @@ var SimpleVolume = (function () {
         }
     };
     SimpleVolume.prototype.SwitchVol = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "vol_up" : "vol_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.LimitVol(data);
+                that.LimitVol(data);
             }
         });
     };
     SimpleVolume.prototype.Mute = function () {
-        var tmp = this;
+        var that = this;
         var link = "/My/DevAct/vol_mute/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.LimitVol(data);
+                that.LimitVol(data);
             }
         });
     };
@@ -452,38 +452,38 @@ var Termostat = (function () {
         }
     };
     Termostat.prototype.SwitchMode = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "pmode_up" : "pmode_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PmodeValue = data;
-                tmp.ChangePmode(false);
+                that.PmodeValue = data;
+                that.ChangePmode(false);
             }
         });
     };
     Termostat.prototype.SwitchTemp = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "tmp_up" : "tmp_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     };
     Termostat.prototype.MaxMinTemp = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "tmp_max" : "tmp_min";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     };
@@ -548,26 +548,26 @@ var RefTemp = (function () {
         }
     };
     RefTemp.prototype.SwitchTemp = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "tmp_up" : "tmp_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     };
     RefTemp.prototype.MaxMinTemp = function (Switch) {
-        var tmp = this;
+        var that = this;
         var link = Switch ? "tmp_max" : "tmp_min";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     };
@@ -599,7 +599,7 @@ var RefSpaceSimple = (function () {
             var tbody_1 = this.tbody;
             var num_1 = this.num;
             var trField_1 = this.trField;
-            var elemId_1 = this.tbody.children().length > 1 ? parseInt(this.tbody.children().last().attr('id').split("_")[1]) + 1 : 0;
+            var elemId_1 = this.tbody.children().length > 0 ? parseInt(this.tbody.children().last().attr('id').split("_")[1]) + 1 : 0;
             //if (elemId == 0 || this.tbody.children().last().find('[id*="td_inpt0_"]').is(':hidden')) {
             var link = "/My/Add/ref_add/" + elemId_1 + "/" + num_1;
             $.ajax({
@@ -811,14 +811,14 @@ var RefSpaceSimple = (function () {
     };
     RefSpaceSimple.prototype.CheckTr = function (num) {
         var idTr = "#tr_" + num + "_" + this.num;
-        var tmp = this;
+        var that = this;
         var check = $(document).on("click", function (e) {
             var elem = $(e.target);
             var outOfArea = elem.closest(idTr).length == 0;
             var valId = elem.attr("id");
             var checklbl0 = valId == undefined ? false : valId.search("lbl0") >= 0;
             if (outOfArea || checklbl0) {
-                tmp.OnblurTr(num);
+                that.OnblurTr(num);
             }
             //$(document).off('click');
             check = null;
@@ -848,11 +848,11 @@ var TimerMicr = (function () {
         this.lblShowRest.show();
         var time = parseInt(this.lblRestTime.text());
         var lblRestTime = this.lblRestTime;
-        var tmp = this;
+        var that = this;
         var num = this.num;
         this.timer = setTimeout(function () {
             Overlay.Show("Таймер №" + num + " сработал!");
-            tmp.Reset();
+            that.Reset();
         }, time * 1000);
         this.tmpTimer = setInterval(function () {
             lblRestTime.text(parseInt(lblRestTime.text()) - 1);
@@ -868,7 +868,7 @@ var TimerMicr = (function () {
         this.btnReset.show();
         clearTimeout(this.timer);
         clearTimeout(this.tmpTimer);
-        var tmp = this;
+        var that = this;
         var link = "/My/DevAct/micr_stop/" + this.lblRestTime.text() + "/" + this.num;
         $.ajax({
             url: link,
@@ -943,7 +943,7 @@ var TimerMicr = (function () {
         }
     };
     TimerMicr.prototype.Onblur = function () {
-        var tmp = this;
+        var that = this;
         var checkSuc = this.btnSuccess.attr("id");
         var checkEdit = this.btnEdit.attr("id");
         var checkInput = this.input.attr("id");
@@ -957,13 +957,13 @@ var TimerMicr = (function () {
                     check_1 = null;
                 }
                 else if (check_1) {
-                    tmp.Cancel();
+                    that.Cancel();
                     //$(document).off('click');
                     check_1 = null;
                 }
             }
             else
-                tmp.Cancel();
+                that.Cancel();
             //$(document).off('click');
             check = null;
         });

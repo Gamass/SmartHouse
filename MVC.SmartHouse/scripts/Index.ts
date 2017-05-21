@@ -96,13 +96,13 @@ abstract class Dev {
     protected abstract enableContent(): void;
 
     public SwitchPower(): void {
-        let tmp: Dev = this;
+        let that: Dev = this;
         let link: string = "/My/DevAct/" + "Power" + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PowerState = data;
-                tmp.enableContent();
+                that.PowerState = data;
+                that.enableContent();
             }
         });
     }
@@ -164,14 +164,14 @@ class SimpleMode implements IPmode {
     }
 
     public SwitchMode(Switch: boolean): void {
-        let tmp: IPmode = this;
+        let that: IPmode = this;
         let link: string = Switch ? "pmode_up" : "pmode_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PmodeValue = data;
-                tmp.ChangePmode(false);
+                that.PmodeValue = data;
+                that.ChangePmode(false);
             }
         });
     }
@@ -260,7 +260,7 @@ class TvChannel implements IChannel {
 
     private SetChn(Switch: number): void {
         this.chnWrite.prop("disabled", true);
-        let tmp: IChannel = this;
+        let that: IChannel = this;
         let link: string
         if (Switch == 4)
             link = "/My/DevAct/chn_write/" + this.chnInput.val() + "/" + this.num
@@ -271,8 +271,8 @@ class TvChannel implements IChannel {
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.ChnNumValue = parseInt(data);
-                tmp.LimitChn(parseInt(data));
+                that.ChnNumValue = parseInt(data);
+                that.LimitChn(parseInt(data));
             }
         });
     }
@@ -377,24 +377,24 @@ class SimpleVolume implements IVolume {
     }
 
     public SwitchVol(Switch: boolean): void {
-        let tmp: IVolume = this;
+        let that: IVolume = this;
         let link: string = Switch ? "vol_up" : "vol_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.LimitVol(data);
+                that.LimitVol(data);
             }
         });
     }
 
     public Mute(): void {
-        let tmp: IVolume = this;
+        let that: IVolume = this;
         let link: string = "/My/DevAct/vol_mute/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.LimitVol(data);
+                that.LimitVol(data);
             }
         });
     }
@@ -517,41 +517,41 @@ class Termostat implements IPmode, ITemperature {
     }
 
     public SwitchMode(Switch: boolean): void {
-        let tmp: IPmode = this;
+        let that: IPmode = this;
         let link: string = Switch ? "pmode_up" : "pmode_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
 
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.PmodeValue = data;
-                tmp.ChangePmode(false);
+                that.PmodeValue = data;
+                that.ChangePmode(false);
             }
         });
     }
 
     public SwitchTemp(Switch: boolean): void {
-        let tmp: ITemperature = this;
+        let that: ITemperature = this;
         let link: string = Switch ? "tmp_up" : "tmp_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     }
 
     public MaxMinTemp(Switch: boolean): void {
-        let tmp: ITemperature = this;
+        let that: ITemperature = this;
         let link: string = Switch ? "tmp_max" : "tmp_min";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     }
@@ -613,28 +613,28 @@ class RefTemp implements ITemperature {
     }
 
     public SwitchTemp(Switch: boolean): void {
-        let tmp: ITemperature = this;
+        let that: ITemperature = this;
         let link: string = Switch ? "tmp_up" : "tmp_dn";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
 
     }
 
     public MaxMinTemp(Switch: boolean): void {
-        let tmp: ITemperature = this;
+        let that: ITemperature = this;
         let link: string = Switch ? "tmp_max" : "tmp_min";
         link = "/My/DevAct/" + link + "/" + this.num;
         $.ajax({
             url: link,
             success: function (data) {
-                tmp.TModeValue = data;
-                tmp.LimitTemp(false);
+                that.TModeValue = data;
+                that.LimitTemp(false);
             }
         });
     }
@@ -699,7 +699,7 @@ class RefSpaceSimple implements IRefField {
             let tbody: JQuery = this.tbody;
             let num = this.num;
             let trField = this.trField;
-            let elemId: number = this.tbody.children().length > 1 ? parseInt(this.tbody.children().last().attr('id').split("_")[1]) + 1 : 0;
+            let elemId: number = this.tbody.children().length > 0 ? parseInt(this.tbody.children().last().attr('id').split("_")[1]) + 1 : 0;
             //if (elemId == 0 || this.tbody.children().last().find('[id*="td_inpt0_"]').is(':hidden')) {
                 let link: string = "/My/Add/ref_add/" + elemId + "/" + num;
                 $.ajax({
@@ -925,7 +925,7 @@ class RefSpaceSimple implements IRefField {
 
     public CheckTr(num: number) {
         let idTr: string = "#tr_" + num + "_" + this.num;
-        let tmp: IRefField = this;
+        let that: IRefField = this;
         let check =
             $(document).on("click", function (e) {
                 let elem: JQuery = $(e.target);
@@ -933,7 +933,7 @@ class RefSpaceSimple implements IRefField {
                 let valId: string = elem.attr("id");
                 let checklbl0: boolean = valId == undefined ? false : valId.search("lbl0") >= 0;
                 if (outOfArea || checklbl0) {
-                    tmp.OnblurTr(num);
+                    that.OnblurTr(num);
                 }
                 //$(document).off('click');
                 check = null;
@@ -991,11 +991,11 @@ class TimerMicr implements ITimer {
         this.lblShowRest.show();
         let time: number = parseInt(this.lblRestTime.text());
         let lblRestTime : JQuery = this.lblRestTime;
-        let tmp: ITimer = this;
+        let that: ITimer = this;
         let num: number = this.num;
         this.timer = setTimeout(function () {
             Overlay.Show("Таймер №" + num + " сработал!");
-            tmp.Reset();
+            that.Reset();
         },  time * 1000);
         this.tmpTimer = setInterval(function () {
             lblRestTime.text(parseInt(lblRestTime.text()) - 1);
@@ -1012,7 +1012,7 @@ class TimerMicr implements ITimer {
         this.btnReset.show();
         clearTimeout(this.timer);
         clearTimeout(this.tmpTimer);
-        let tmp: ITimer = this;
+        let that: ITimer = this;
         let link: string = "/My/DevAct/micr_stop/" + this.lblRestTime.text() + "/" + this.num;
         $.ajax({
             url: link,
@@ -1095,7 +1095,7 @@ class TimerMicr implements ITimer {
     }
 
     public Onblur(): void {
-        let tmp: ITimer = this;
+        let that: ITimer = this;
         let checkSuc: string = this.btnSuccess.attr("id");
         let checkEdit: string = this.btnEdit.attr("id");
         let checkInput: string = this.input.attr("id");
@@ -1110,13 +1110,13 @@ class TimerMicr implements ITimer {
                         check = null;
                     }
                     else if (check) {
-                        tmp.Cancel();
+                        that.Cancel();
                         //$(document).off('click');
                         check = null;
                     }
                 }
                 else
-                    tmp.Cancel();
+                    that.Cancel();
                 //$(document).off('click');
                 check = null;
             });
